@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import BoxRow from "./components/BoxRow";
+import React, { useContext } from "react";
+import classes from "./app.module.css";
 
-function App() {
+import { TurnContext } from "./store/turn-context";
+const App = () => {
+  const { status } = useContext(TurnContext);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1 className={classes.h1}>TIC-TAC-TOE</h1>
+      <p> {status} </p>
+      <table className={classes.table}>
+        <tbody>
+          <BoxRow rowId="1" />
+          <BoxRow rowId="2" />
+          <BoxRow rowId="3" />
+        </tbody>
+      </table>
     </div>
   );
-}
+};
 
 export default App;
