@@ -13,40 +13,6 @@ const TurnContextProvider = (props) => {
   const [cross, setCross] = useState([]);
   const [status, setStatus] = useState("O's Turn");
 
-  const checkWinner = (o, x) => {
-    // const winner = [
-    //   [11, 12, 13],
-    //   [21, 22, 23],
-    //   [31, 32, 33],
-    //   [11, 21, 31],
-    //   [21, 22, 23],
-    //   [31, 32, 33],
-    //   [11, 22, 33],
-    //   [13, 22, 31],
-    // ];
-    // winner.forEach((troi) => {
-    //   const zeroWin = troi.every((el) => {
-    //     return o.includes(el);
-    //   });
-    //   const crossWin = troi.every((el) => {
-    //     return x.includes(el);
-    //   });
-    //   if (zeroWin) {
-    //     setStatus("Zero wins the Game.");
-    //   } else if (crossWin) {
-    //     setStatus("Cross wins the Game.");
-    //   }
-    // });
-  };
-
-  const toggleStatus = async () => {
-    if (status === "O's Turn") {
-      await setStatus("X's Turn");
-    } else {
-      await setStatus("O's Turn");
-    }
-  };
-
   const toggleTurn = async (e, id) => {
     toggleStatus();
     //store in appropriate array
