@@ -1,20 +1,18 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleTurn, checkWinner } from "../components/boxSlice";
+import { toggleTurn, checkWinner, setBoxObj } from "../components/boxSlice";
 
 import classes from "./box.module.css";
 
 const Box = (props) => {
-  const turn = useSelector((state) => state.turn.turn);
-  const status = useSelector((state) => state.turn.status);
+  const { boxObj } = useSelector((state) => state.turn);
   const dispatch = useDispatch();
 
   const handleClick = (e) => {
+    console.log("Button clicked!!!");
+    dispatch(setBoxObj(props.boxId));
     dispatch(toggleTurn(props.boxId));
     dispatch(checkWinner());
-
-    e.target.disabled = true;
-    e.target.value = turn;
   };
 
   return (
@@ -22,9 +20,8 @@ const Box = (props) => {
       <input
         className={classes.box}
         type="button"
-        disabled={
-          status === "Zero wins the Game." || status === "Cross wins the Game."
-        }
+        disabled={boxObj[props.boxId].dis}
+        value={boxObj[props.boxId].con}
         onClick={(e) => {
           handleClick(e);
         }}

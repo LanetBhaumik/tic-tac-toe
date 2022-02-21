@@ -1,4 +1,9 @@
 .box {
   width: 100px;
   height: 100px;
+  background-color: deepskyblue;
+  font-size: xx-large;
+  color: aliceblue;
+  border-radius: 2rem;
+  outline: auto;
 }
