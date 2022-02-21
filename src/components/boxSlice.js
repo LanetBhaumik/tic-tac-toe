@@ -5,43 +5,41 @@ const initialState = {
   status: "O's Turn",
   zero: [],
   cross: [],
-  boxObj: {
-    11: {
-      con: "",
-      dis: false,
-    },
-    12: {
-      con: "",
-      dis: false,
-    },
-    13: {
-      con: "",
-      dis: false,
-    },
-    21: {
-      con: "",
-      dis: false,
-    },
-    22: {
-      con: "",
-      dis: false,
-    },
-    23: {
-      con: "",
-      dis: false,
-    },
-    31: {
-      con: "",
-      dis: false,
-    },
-    32: {
-      con: "",
-      dis: false,
-    },
-    33: {
-      con: "",
-      dis: false,
-    },
+  11: {
+    con: "",
+    dis: false,
+  },
+  12: {
+    con: "",
+    dis: false,
+  },
+  13: {
+    con: "",
+    dis: false,
+  },
+  21: {
+    con: "",
+    dis: false,
+  },
+  22: {
+    con: "",
+    dis: false,
+  },
+  23: {
+    con: "",
+    dis: false,
+  },
+  31: {
+    con: "",
+    dis: false,
+  },
+  32: {
+    con: "",
+    dis: false,
+  },
+  33: {
+    con: "",
+    dis: false,
   },
 };
 
@@ -51,8 +49,8 @@ export const turnSlice = createSlice({
   reducers: {
     setBoxObj: (state, action) => {
       const id = action.payload;
-      state.boxObj[id].con = state.turn;
-      state.boxObj[id].dis = true;
+      state[id].con = state.turn;
+      state[id].dis = true;
     },
     reset: (state) => {
       const keys = Object.keys(initialState);
@@ -76,6 +74,7 @@ export const turnSlice = createSlice({
     },
 
     checkWinner: (state) => {
+      const arr = ["11", "12", "13", "21", "22", "23", "31", "32", "33"];
       const winner = [
         ["11", "12", "13"],
         ["21", "22", "23"],
@@ -95,16 +94,14 @@ export const turnSlice = createSlice({
         });
         if (zeroWin) {
           state.status = "Zero wins the Game.";
-          const keys = Object.keys(state.boxObj);
-          keys.forEach((key) => {
-            state.boxObj[key].dis = true;
+          arr.forEach((key) => {
+            state[key].dis = true;
           });
           return;
         } else if (crossWin) {
           state.status = "Cross wins the Game.";
-          const keys = Object.keys(state.boxObj);
-          keys.forEach((key) => {
-            state.boxObj[key].dis = true;
+          arr.forEach((key) => {
+            state[key].dis = true;
           });
           return;
         }

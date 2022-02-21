@@ -2,10 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import "./App.css";
-import BoxRow from "./components/BoxRow";
+import Box from "./components/Box";
 import Reset from "./components/Reset";
-
-// import { TurnContext } from "./store/turn-context";
 const App = () => {
   return (
     <div className="containter">
@@ -28,9 +26,21 @@ const App = () => {
       </p>
       <table className="table">
         <tbody>
-          <BoxRow rowId="1" />
-          <BoxRow rowId="2" />
-          <BoxRow rowId="3" />
+          <tr>
+            <Box boxId="11" />
+            <Box boxId="12" />
+            <Box boxId="13" />
+          </tr>
+          <tr>
+            <Box boxId="21" />
+            <Box boxId="22" />
+            <Box boxId="23" />
+          </tr>
+          <tr>
+            <Box boxId="31" />
+            <Box boxId="32" />
+            <Box boxId="33" />
+          </tr>
         </tbody>
       </table>
       <Reset />

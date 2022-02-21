@@ -1,11 +1,15 @@
-import React from "react";
+import React, { memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTurn, checkWinner, setBoxObj } from "../components/boxSlice";
 
 import classes from "./box.module.css";
 
 const Box = (props) => {
-  const { boxObj } = useSelector((state) => state.turn);
+  // useEffect(() => {}, [boxObj[props.boxId]]);
+
+  console.log("box rendered");
+  const { boxId } = props;
+  const { con, dis } = useSelector((state) => state.turn[boxId]);
   const dispatch = useDispatch();
 
   const handleClick = (e) => {
@@ -20,8 +24,8 @@ const Box = (props) => {
       <input
         className={classes.box}
         type="button"
-        disabled={boxObj[props.boxId].dis}
-        value={boxObj[props.boxId].con}
+        disabled={dis}
+        value={con}
         onClick={(e) => {
           handleClick(e);
         }}
@@ -30,4 +34,4 @@ const Box = (props) => {
   );
 };
 
-export default Box;
+export default memo(Box);
